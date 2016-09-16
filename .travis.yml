@@ -6,3 +6,4 @@ jdk:
 
 script:
  - javac -cp lib/junit.jar Main.java Test.java
+ - ant test
