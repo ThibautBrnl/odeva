@@ -1,1 +1,9 @@
 language: java
+
+matrix:
+	include:
+		- java: "8"
+		- java: "7"
+
+script:
+	- javac Main.java
