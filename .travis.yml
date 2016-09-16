@@ -1,9 +1,8 @@
 language: java
 
-matrix:
-	include:
-		- java: "8"
-		- java: "7"
+jdk:
+	- oraclejdk8
+	- oraclejdk7
 
 script:
 	- javac Main.java
