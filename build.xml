@@ -11,6 +11,9 @@
     <pathelement location="${build.dir}" />
   </path>
 
+  <target name="test">
+  </target>
+
   <target name="clean">
     <delete dir="${build.dir}" />
     <delete dir="${test.report.dir}" />
