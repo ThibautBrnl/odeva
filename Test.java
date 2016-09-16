@@ -1,11 +1,9 @@
-import static org.junit.Assert.*;
+import org.junit.*;
 
 public class Test {
 
-	@Test
+	@org.junit.Test
 	public void testSomeFunction() {
-		Main m = new Main();
-
-		Assert.assertEquals(m.someFunction(), 42);
+		Assert.assertEquals(Main.someFunction(), 42);
 	}
 }

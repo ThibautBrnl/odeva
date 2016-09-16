@@ -5,5 +5,4 @@ jdk:
  - oraclejdk7
 
 script:
- - javac Main.java
- - javac Test.java
+ - javac -cp lib/junit.jar Main.java Test.java

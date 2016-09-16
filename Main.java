@@ -1,6 +1,6 @@
 public class Main {
 
-	public int someFunction() {
+	public static int someFunction() {
 		return 42;
 	}
 
