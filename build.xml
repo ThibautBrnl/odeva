@@ -1,32 +1,46 @@
 <?xml version="1.0"?>
-<project name="odeva" default="main" basedir=".">
-	<property name="src.dir" location="." />
-	<property name="test.dir" location="." />
+<project name="Ant-Test" default="main" basedir=".">
+  <property name="src.dir" location="." />
+  <property name="build.dir" location="." />
+  <property name="test.dir" location="." />
+  <property name="test.report.dir" location="." />
 
-	<path id="junit.class.path">
-		<pathelement location="lib/junit.jar" />
-	</path>
+  <path id="junit.class.path">
+    <pathelement location="lib/junit.jar" />
+    <pathelement location="lib/hamcrest-core-1.3.jar" />
+    
+    <pathelement location="${build.dir}" />
+  </path>
 
-	<target name="compile">
-	    <javac srcdir="${src.dir}" destdir="${src.dir}">
-	      <classpath refid="junit.class.path" />
-	    </javac>
-	</target>
+  <target name="clean">
+    <delete dir="${build.dir}" />
+    <delete dir="${test.report.dir}" />
+  </target>
 
-	<target name="junit" depends="compile">
-	    <junit printsummary="on" fork="true" haltonfailure="yes">
-	    	<classpath refid="junit.class.path" />
-	    	<formatter type="xml" />
-	    	<batchtest todir="${test.report.dir}">
-				<fileset dir="${src.dir}">
-		        	<include name="**/*Test*.java" />
-				</fileset>
-			</batchtest>
-		</junit>
-	</target>
+  <target name="makedir">
+    <mkdir dir="${build.dir}" />
+    <mkdir dir="${test.report.dir}" />
+  </target>
 
-	<target name="main" depends="compile, junit">
-    	<description>Main target</description>
-  	</target>
-</project>
+  <target name="compile" depends="clean, makedir">
+    <javac srcdir="${src.dir}" destdir="${build.dir}">
+      <classpath refid="junit.class.path" />
+    </javac>
+  </target>
 
+  <target name="junit" depends="compile">
+    <junit printsummary="on" fork="true" haltonfailure="yes">
+      <classpath refid="junit.class.path" />
+      <formatter type="xml" />
+      <batchtest todir="${test.report.dir}">
+        <fileset dir="${src.dir}">
+          <include name="**/*Test*.java" />
+        </fileset>
+      </batchtest>
+    </junit>
+  </target>
+
+  <target name="main" depends="compile, junit">
+    <description>Main target</description>
+  </target>
+</project> 
