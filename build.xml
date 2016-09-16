@@ -11,20 +11,12 @@
     <pathelement location="${build.dir}" />
   </path>
 
-  <target name="test">
-  </target>
-
-  <target name="clean">
-    <delete dir="${build.dir}" />
-    <delete dir="${test.report.dir}" />
-  </target>
-
   <target name="makedir">
     <mkdir dir="${build.dir}" />
     <mkdir dir="${test.report.dir}" />
   </target>
 
-  <target name="compile" depends="clean, makedir">
+  <target name="compile" depends="makedir">
     <javac srcdir="${src.dir}" destdir="${build.dir}">
       <classpath refid="junit.class.path" />
     </javac>
