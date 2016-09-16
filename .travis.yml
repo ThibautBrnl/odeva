@@ -6,3 +6,4 @@ jdk:
 
 script:
  - javac Main.java
+ - javac Test.java
